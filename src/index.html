@@ -1,12 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Webpack Static Boilerplate</title>
 </head>
+
 <body>
-  <div>Hello world!</div>
+  <!-- overlay -->
+  <div class="overlay"></div>
+  <!-- ./overlay -->
+
+  <!-- header -->
+  <header class="top-navigation">
+    <div class="container">
+      <div class="top-navigation-logo">
+        <a href="https://www.tokopedia.com/"></a>
+      </div>
+      <div class="top-navigation-pivot">
+        <div class="pivot inline-block">
+          <button class="pivot-button">Expander</button>
+          <div class="pivot-container">
+            <div class="pivot-item">
+              <a href="https://www.tokopedia.com/" class="pivot-item__link" target="_blank">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-toped"></div>
+                </div>
+                <p class="pivot-icon__text">Jual Beli Online</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+            <div class="pivot-item">
+              <a href="https://www.tokopedia.com/official-store" class="pivot-item__link" target="_blank" id="pivot-official-store">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-official"></div>
+                </div>
+                <p class="pivot-icon__text">Official Store</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+            <div class="pivot-item">
+              <a href="https://www.tokopedia.com/pulsa" class="pivot-item__link" target="_blank">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-pulsa"></div>
+                </div>
+                <p class="pivot-icon__text">Produk Digital</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+            <div class="pivot-item">
+              <a href="https://tiket.tokopedia.com/" class="pivot-item__link" target="_blank">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-tiket"></div>
+                </div>
+                <p class="pivot-icon__text">Tiket Kereta</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+            <div class="pivot-item">
+              <a href="https://www.tokopedia.com/berbagi/" class="pivot-item__link" target="_blank">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-donasi"></div>
+                </div>
+                <p class="pivot-icon__text">Donasi</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+            <div class="pivot-item">
+              <a href="https://www.tokopedia.com/bantuan/" class="pivot-item__link" target="_blank">
+                <div class="pivot-icon__wrapper">
+                  <div class="pivot-icon pivot-icon-help"></div>
+                </div>
+                <p class="pivot-icon__text">Bantuan</p>
+                <span class="clear-b"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="top-navigation-menu">
+        <ul>
+          <li class="top-navigation-menu-list">
+            <a href="<?php echo get_bloginfo('url') ?>" class="top-navigation-menu__link">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </header>
+  <!-- ./header -->
+
+  <main>
+    <div class="container">
+      <h1>Static Boilerplate is Ready</h1>
+      <p>Edit <strong>config.js</strong> to modify your webpack configuration</p>
+      <p>You can add your stylesheet in <strong>/sass/style.scss</strong></p>
+      <p>You can add your script in <strong>/js/index.js</strong></p>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container clearfix">
+      <div class="footer-copyright">
+        &copy; 2009-2018, PT Tokopedia
+      </div>
+      <div class="footer-connect">
+        <ul>
+          <li>
+            <a href="https://itunes.apple.com/us/app/tokopedia/id1001394201?ls=1&mt=8" target="_blank">
+              <span class="footer-connect__apps appstore" alt="appstore">
+            </a>
+          </li>
+          <li>
+            <a href="https://play.google.com/store/apps/details?id=com.tokopedia.tkpd" target="_blank">
+              <span class="footer-connect__apps googleplay" alt="googleplay">
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="https://www.facebook.com/tokopedia" target="_blank">
+              <span class="footer-connect__icon facebook" alt="facebook">
+            </a>
+          </li>
+          <li>
+            <a href="http://instagram.com/tokopedia" target="_blank">
+              <span class="footer-connect__icon instagram" alt="instagram">
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/tokopedia" target="_blank">
+              <span class="footer-connect__icon twitter" alt="twitter">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/user/tokopedia" target="_blank">
+              <span class="footer-connect__icon youtube" alt="youtube">
+            </a>
+          </li>
+          <li>
+            <a href="https://plus.google.com/+tokopedia/posts" target="_blank">
+              <span class="footer-connect__icon googleplus" alt="google_plus">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tokopedia.com/blog/" target="_blank">
+              <span class="footer-connect__icon blog" alt="blog_tokopedia">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <!-- ./footer -->
 </body>
+
 </html>

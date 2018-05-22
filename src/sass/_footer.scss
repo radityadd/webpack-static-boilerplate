@@ -1,0 +1,90 @@
+.footer {
+  padding: 20px 0;
+  background: #FFF;
+  -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.footer-copyright {
+  padding: 10px 10px 10px 0;
+  float: left;
+
+  @include breakpoint(xs) {
+    text-align: center;
+    display: block;
+    float: none!important;
+  }
+}
+
+.footer-connect {
+  padding: 5px;
+  float: right;
+
+  @include breakpoint(xs) {
+    text-align: center;
+    display: block;
+    float: none!important;
+  }
+}
+
+.footer-connect>ul {
+  margin: 0;
+  padding: 0 10px;
+  display: inline-block;
+
+  @include breakpoint(xs) {
+    padding: 5px;
+  }
+}
+
+.footer-connect>ul>li {
+  list-style: none;
+  display: inline-block;
+}
+
+.footer-connect__apps {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  background-position: center;
+  &.googleplay {
+    background: url('../images/icon-googleplay.png') no-repeat;
+    background-size: contain;
+  }
+  &.appstore {
+    background: url('../images/icon-appstore.png') no-repeat;
+    background-size: contain;
+  }
+}
+
+.footer-connect__icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  &.facebook {
+    background: url('../images/icon-facebook.png') no-repeat;
+    background-size: contain;
+  }
+  &.instagram {
+    background: url('../images/icon-instagram.png') no-repeat;
+    background-size: contain;
+  }
+  &.twitter {
+    background: url('../images/icon-twitter.png') no-repeat;
+    background-size: contain;
+  }
+  &.youtube {
+    background: url('../images/icon-youtube.png') no-repeat;
+    background-size: contain;
+  }
+  &.googleplus {
+    background: url('../images/icon-googleplus.png') no-repeat;
+    background-size: contain;
+  }
+  &.blog {
+    background: url('../images/icon-blog.png') no-repeat;
+    background-size: contain;
+  }
+}

@@ -1,5 +1,18 @@
 @import 'reset';
+@import 'mixins';
+@import 'header';
+@import 'footer';
+@import 'base';
 
-div {
-  color: red;
+h1 {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  margin: 10px 0 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.54);
+  margin: 5px 0;
 }
