@@ -3,31 +3,30 @@
  * if you wanna use jQuery.
  */
 
-$(document).ready(function () {
-  /* ================
-   * Pivot Controller
-   * ================ */
-  var pivotDelay = 200, pivotEnterTimeout, pivotLeaveTimeout;
-  var $overlay = $('.overlay');
-  var $pivotContainer = $('.pivot-container');
+$(document).ready(() => {
+  /**
+   * Pivot controller
+   */
+  const pivotDelay = 200;
+  const $overlay = $('.overlay');
+  const $pivotContainer = $('.pivot-container');
 
-  $('.pivot-button, .pivot-container').hover(function () {
-    /* Dont display pivot if mouse enter < delay */
+  let pivotEnterTimeout;
+  let pivotLeaveTimeout;
+
+  $('.pivot-button, .pivot-container').hover(() => {
     clearTimeout(pivotLeaveTimeout);
 
-    /* Setting delay on mouseenter */
-    pivotEnterTimeout = setTimeout(function () {
+    pivotEnterTimeout = setTimeout(() => {
       $pivotContainer.addClass('pivot-container--active');
       $overlay.show();
     }, pivotDelay);
-  }, function () {
-    /* Dont remove pivot if mouse leave < delay */
+  }, () => {
     clearTimeout(pivotEnterTimeout);
 
-    /* Setting delay on mouseleave */
-    pivotLeaveTimeout = setTimeout(function () {
+    pivotLeaveTimeout = setTimeout(() => {
       $pivotContainer.removeClass('pivot-container--active');
       $overlay.hide();
     }, pivotDelay);
   });
-})
+});
