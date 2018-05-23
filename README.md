@@ -54,13 +54,15 @@ Do you prefer using jQuery in your project? If you don't, just change it to `fal
 ```
 
 ### HTML template
-`template` is HTML source, `build` is target HTML output with css and js included.
+`template` is HTML source, `filename` is target HTML output with css and js included. And you have to add
+`chunks` to each HTML Template.
 ```
 {
-  html: {
+  html: [{
     template: './src/index.html',
-    build: 'index.html',
-  }
+    filename: 'index.html',
+    chunks: ['main'],
+  }]
 }
 ```
 

@@ -6,10 +6,13 @@ const config = {
     ],
   },
   jquery: true,
-  html: {
-    template: './src/index.html',
-    build: 'index.html',
-  },
+  html: [
+    {
+      template: './src/index.html',
+      filename: 'index.html',
+      chunks: ['main'],
+    },
+  ],
   cdn: {
     upload: false,
     options: {

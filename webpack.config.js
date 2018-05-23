@@ -14,7 +14,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const S3Plugin = require('webpack-s3-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+const webpackConfig = {
   mode: process.env.NODE_ENV,
   devServer: {
     contentBase: './dist',
@@ -72,10 +72,6 @@ module.exports = {
       filename: isProduction ? '[name].[contenthash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css',
     }),
-    new HtmlWebpackPlugin({
-      template: userConfig.html.template,
-      filename: userConfig.html.build,
-    }),
   ],
   optimization: {
     minimizer: [
@@ -89,15 +85,21 @@ module.exports = {
   },
 };
 
+if (userConfig.html.length !== 0) {
+  webpackConfig.plugins = webpackConfig.plugins
+    .concat(userConfig.html
+      .map(htmlConfig => new HtmlWebpackPlugin(htmlConfig)));
+}
+
 if (userConfig.jquery) {
-  module.exports.plugins.push(new webpack.ProvidePlugin({
+  webpackConfig.plugins.push(new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
   }));
 }
 
 if (isProduction && userConfig.cdn.upload) {
-  module.exports.plugins.push(new S3Plugin({
+  webpackConfig.plugins.push(new S3Plugin({
     include: /.*\.(css|js|png|jpe?g|gif|svg)$/,
     s3Options: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -110,3 +112,5 @@ if (isProduction && userConfig.cdn.upload) {
     basePath: userConfig.cdn.options.directory,
   }));
 }
+
+module.exports = webpackConfig;
