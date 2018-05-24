@@ -22,7 +22,7 @@ const webpackConfig = {
   devtool: isProduction ? false : 'source-map',
   entry: userConfig.entry,
   output: {
-    filename: '[name].min.js',
+    filename: '[name].[contenthash].min.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: publicDir,
   },
@@ -52,11 +52,29 @@ const webpackConfig = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(png|jpe?g|svg|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
         use: [{
-          loader: 'url-loader',
+          loader: 'svg-url-loader',
           options: {
             limit: 8192,
+            noquotes: true,
           },
         }],
       },

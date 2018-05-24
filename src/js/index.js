@@ -3,10 +3,20 @@
  * if you wanna use jQuery.
  */
 
-$(document).ready(() => {
-  /**
-   * Pivot controller
-   */
+const isOnViewport = (element) => {
+  const $elem = $(element);
+  const $window = $(window);
+
+  const windowTop = $window.scrollTop();
+  const windowBottom = windowTop + $window.height();
+
+  const elemTop = $elem.offset().top;
+  const elemBottom = elemTop + $elem.height();
+
+  return (elemTop >= windowTop) && (elemBottom <= windowBottom);
+};
+
+const initPivot = () => {
   const pivotDelay = 200;
   const $overlay = $('.overlay');
   const $pivotContainer = $('.pivot-container');
@@ -28,5 +38,41 @@ $(document).ready(() => {
       $pivotContainer.removeClass('pivot-container--active');
       $overlay.hide();
     }, pivotDelay);
+  });
+};
+
+const gtmImpression = (dataLayer) => {
+  $('[data-impression]:not(.viewed)').each(() => {
+    if (isOnViewport($(this))) {
+      dataLayer.push(JSON.parse($(this).attr('data-impression')));
+
+      $(this).addClass('viewed');
+    }
+  });
+};
+
+const initGtmClickListener = (dataLayer) => {
+  $('body').on('click', 'a[data-click]', (event) => {
+    event.preventDefault();
+
+    const gtmProps = JSON.parse($(this).attr('data-click'));
+    const targetUrl = $(this).attr('href');
+
+    gtmProps.eventCallback = () => {
+      document.location = targetUrl;
+    };
+
+    dataLayer.push(gtmProps);
+  });
+};
+
+$(document).ready(() => {
+  const dataLayer = window.dataLayer || [];
+
+  initPivot();
+  initGtmClickListener();
+
+  $(window).scroll(() => {
+    gtmImpression(dataLayer);
   });
 });
