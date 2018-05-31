@@ -4,15 +4,61 @@
 @import 'footer';
 @import 'base';
 
-h1 {
-  font-size: 2rem;
+.site-title {
+  position: relative;
+  font-size: (22rem/14);
   color: rgba(0, 0, 0, 0.7);
-  font-weight: 600;
-  margin: 10px 0 20px;
+  margin: 20px 0;
+  padding-left: 15px;
+  line-height: 30px;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 30px;
+    width: 5px;
+    border-radius: 10px;
+    background: #42B549;
+  }
 }
 
-p {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.54);
-  margin: 5px 0;
+.col-3 {
+  width: 33.33%;
+  float: left;
+}
+
+.card {
+  display: block;
+  position: relative;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 24px 1px;
+  margin: 16px;
+  padding: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 1.5;
+  &-title {
+    margin-bottom: 10px;
+    font-size: (16rem/14);
+    color: rgba(0, 0, 0, 0.7);
+  }
+  &-text {
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 10px;
+  }
+}
+
+.btn {
+  display: block;
+  border-radius: 3px;
+  line-height: 48px;
+  width: 100%;
+  background: #42B549;
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
