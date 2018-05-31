@@ -66,6 +66,7 @@ const initGtmClickListener = (dataLayer) => {
   });
 };
 
+
 $(document).ready(() => {
   const dataLayer = window.dataLayer || [];
 
@@ -74,5 +75,9 @@ $(document).ready(() => {
 
   $(window).scroll(() => {
     gtmImpression(dataLayer);
+  });
+
+  document.querySelectorAll('#main-green')[0].addEventListener('click', (e) => {
+    console.log(document.getElementById('main-btn').classList);
   });
 });

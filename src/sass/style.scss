@@ -17,3 +17,67 @@ p {
   color: rgba(0, 0, 0, 0.54);
   margin: 5px 0;
 }
+
+/* ======= */
+/* Buttons */
+/* ======= */
+
+.unify-btn {
+  &__buttons {
+    font-weight: 900;
+    font-size: 48px;
+    margin-bottom: 64px;
+    margin-top: 64px;
+  }
+}
+
+.main-options-colors {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-right: 24px;
+  display: inline-block;
+  & > * {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+    border: 2px solid #FFF;
+  }
+}
+.main-options-size {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: inline-block;
+  padding-left: 24px;
+  border-left: 2px solid rgba(0, 0, 0, 0.18);
+  & > * {
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+  }
+}
+
+#main {
+  &-green {
+    background-color: #42B549;
+  }
+  &-orange {
+    background-color: #FF5722;
+  }
+  &-small {
+    width: 30px;
+    height: 30px;
+  }
+  &-medium {
+    width: 36px;
+    height: 36px;
+  }
+  &-large {
+    width: 42px;
+    height: 42px;
+  }
+}
