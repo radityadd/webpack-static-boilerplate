@@ -5,7 +5,7 @@ const config = {
       './src/sass/style.scss',
     ],
   },
-  jquery: true,
+  jquery: false,
   html: [
     {
       template: './src/index.html',

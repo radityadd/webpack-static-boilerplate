@@ -55,17 +55,17 @@ const gtmImpression = (dataLayer) => {
 };
 
 const initGtmClickListener = (dataLayer) => {
-  $('body').on('click', 'a[data-click]', (event) => {
-    event.preventDefault();
+  document.body.addEventListener('click', (event) => {
+    if (event.target.matches('a[data-click]')) {
+      const gtmProps = JSON.parse(event.target.getAttribute('data-click'));
+      const targetUrl = event.target.getAttribute('href');
 
-    const gtmProps = JSON.parse(event.target.getAttribute('data-click'));
-    const targetUrl = event.target.getAttribute('href');
+      gtmProps.eventCallback = () => {
+        document.location = targetUrl;
+      };
 
-    gtmProps.eventCallback = () => {
-      document.location = targetUrl;
-    };
-
-    dataLayer.push(gtmProps);
+      dataLayer.push(gtmProps);
+    }
   });
 };
 
@@ -75,7 +75,9 @@ window.onload = () => {
   initPivot();
   initGtmClickListener(dataLayer);
 
-  $(window).scroll(() => {
+  gtmImpression(dataLayer);
+
+  window.onscroll = () => {
     gtmImpression(dataLayer);
-  });
+  };
 };
