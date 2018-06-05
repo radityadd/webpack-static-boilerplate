@@ -26,9 +26,34 @@ p {
 .unify-btn {
   &__buttons {
     font-weight: 900;
-    font-size: 48px;
+    font-size: 32px;
     margin-bottom: 64px;
     margin-top: 64px;
+    margin-left: 12px;
+    position: relative;
+    &:before {
+      content: "";
+      height: 25px;
+      width: 5px;
+      background-color: #FF5722;
+      border-radius: 6px;
+      position: absolute;
+      transform: translateY(-50%);
+      left: -12px;
+      top: 50%;
+    }
+  }
+  &__subtitle {
+    font-weight: 600;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 8px;
+  }
+  &__copy {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    line-height: 1.71;
+    margin-bottom: 16px;
   }
 }
 

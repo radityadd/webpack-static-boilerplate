@@ -12,6 +12,11 @@ const config = {
       filename: 'index.html',
       chunks: ['main'],
     },
+    {
+      template: './src/buttons/index.html',
+      filename: './buttons/index.html',
+      chunks: ['main'],
+    },
   ],
   cdn: {
     upload: false,

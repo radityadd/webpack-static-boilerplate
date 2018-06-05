@@ -1,0 +1,114 @@
+.btn-tkpd {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 0 16px;
+    outline: none;
+
+    /* ========= */
+    /* Modifiers */
+    /* ========= */
+    
+    // Size
+    &--small {
+        font-size: 0.785714rem;
+        line-height: 16px;
+        height: 32px;
+    }
+    &--medium {
+        font-size: 0.928571rem;
+        line-height: 24px;
+        height: 40px;
+    }
+    &--large {
+        font-size: 1rem;
+        line-height: 32px;
+        height: 48px;
+    }
+
+    // Main Colors
+    &--green {
+        background: #42B549;
+        color: #FFF;
+        transition: background 0.8s linear;
+        &:hover {
+            background: lighten(#42B549, 10%);
+        }
+    }
+    &--orange {
+        background: #FF5722;
+        color: #FFF;
+        transition: background 0.8s linear;
+        &:hover {
+            background: lighten(#FF5722, 10%);
+        }
+    }
+
+    // Secondary Colors
+    &--sgreen {
+        background: transparent;
+        border: solid 1px #42b549;
+        color: #42B549;
+        transition: background 0.3s ease;
+        &:hover {
+            background: #42B549;
+            color: #FFF;
+        }
+    }
+    &--sgrey, &--sgray {
+        background: transparent;
+        border: 1px solid rgba(0,0,0,.12);
+        color: rgba(0, 0, 0, 0.54);
+        transition: background 0.3s ease;
+        &:hover {
+            background: #e6e6e6;
+            color: #606060;
+        }
+    }
+
+    // Low Colors
+    &--lgreen {
+        background: transparent;
+        color: #42B549;
+        transition: color 0.3s ease;
+        &:hover {
+            color: lighten(#42B549, 8%);
+        }
+    }
+
+    // Disabled
+    &:disabled {
+        color: rgba(0, 0, 0, 0.38);
+        background-color: #e0e0e0;
+        border: solid 1px #e0e0e0;
+        cursor: not-allowed;
+    }
+
+    // Width
+    &--w200 {
+        width: 202px;
+    }
+
+    &__text {
+        position: relative;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        transition: opacity 0.3s linear, top 0.3s linear;
+    }
+}
