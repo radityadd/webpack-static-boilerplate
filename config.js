@@ -4,6 +4,11 @@ const config = {
       './src/js/index.js',
       './src/sass/style.scss',
     ],
+    'about/about': [
+      './src/js/index.js',
+      './src/sass/style.scss',
+      './src/about/about.js',
+    ],
   },
   jquery: false,
   html: [
@@ -12,12 +17,17 @@ const config = {
       filename: 'index.html',
       chunks: ['main'],
     },
+    {
+      template: './src/about/index.html',
+      filename: './about/index.html',
+      chunks: ['about/about'],
+    },
   ],
   cdn: {
-    upload: false,
+    upload: true,
     options: {
       bucket: 'tokopedia-upload',
-      directory: 'assets-tokopoints/prod/static',
+      directory: 'assets-tokopoints/prod/webpacktest/',
       domain: 'https://ecs7.tokopedia.net/',
     },
   },
