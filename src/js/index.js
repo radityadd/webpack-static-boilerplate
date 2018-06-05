@@ -3,67 +3,6 @@
  * if you wanna use jQuery.
  */
 
-if (typeof jQuery === 'undefined') {
-  // No Jquery
-} else {
-  const isOnViewport = (element) => {
-    const $elem = $(element);
-    const $window = $(window);
-    const windowTop = $window.scrollTop();
-    const windowBottom = windowTop + $window.height();
-    const elemTop = $elem.offset().top;
-    const elemBottom = elemTop + $elem.height();
-    return (elemTop >= windowTop) && (elemBottom <= windowBottom);
-  };
-  const initPivot = () => {
-    const pivotDelay = 200;
-    const $overlay = $('.overlay');
-    const $pivotContainer = $('.pivot-container');
-  
-    let pivotEnterTimeout;
-    let pivotLeaveTimeout;
-  
-    $('.pivot-button, .pivot-container').hover(() => {
-      clearTimeout(pivotLeaveTimeout);
-  
-      pivotEnterTimeout = setTimeout(() => {
-        $pivotContainer.addClass('pivot-container--active');
-        $overlay.show();
-      }, pivotDelay);
-    }, () => {
-      clearTimeout(pivotEnterTimeout);
-  
-      pivotLeaveTimeout = setTimeout(() => {
-        $pivotContainer.removeClass('pivot-container--active');
-        $overlay.hide();
-      }, pivotDelay);
-    });
-  };
-  const gtmImpression = (dataLayer) => {
-    $('[data-impression]:not(.viewed)').each(() => {
-      if (isOnViewport($(this))) {
-        dataLayer.push(JSON.parse($(this).attr('data-impression')));
-  
-        $(this).addClass('viewed');
-      }
-    });
-  };
-  const initGtmClickListener = (dataLayer) => {
-    $('body').on('click', 'a[data-click]', (event) => {
-      event.preventDefault();
-  
-      const gtmProps = JSON.parse($(this).attr('data-click'));
-      const targetUrl = $(this).attr('href');
-  
-      gtmProps.eventCallback = () => {
-        document.location = targetUrl;
-      };
-  
-      dataLayer.push(gtmProps);
-    });
-  };
-}
-
 /* ---------------------------
     Ripple Effect Native JS
 --------------------------- */
@@ -74,6 +13,8 @@ Element.prototype.rippleEffect = (e) => {
   let spanEl;
   let rippleX;
   let rippleY;
+  let offsetX;
+  let offsetY;
   let eWidth;
   let eHeight;
 
@@ -108,8 +49,13 @@ Element.prototype.rippleEffect = (e) => {
     spanEl.style.width = `${size}px`;
     spanEl.style.height = `${size}px`;
 
-    rippleX = parseInt(ev.pageX - self.getBoundingClientRect().left, 10) - (size / 2);
-    rippleY = parseInt(ev.pageY - self.getBoundingClientRect().top, 10) - (size / 2);
+    offsetX = self.ownerDocument.defaultView.pageXOffset;
+    offsetY = self.ownerDocument.defaultView.pageYOffset;
+
+    rippleX = parseInt(ev.pageX - (self.getBoundingClientRect().left + offsetX), 10) - (size / 2);
+    rippleY = parseInt(ev.pageY - (self.getBoundingClientRect().top + offsetY), 10) - (size / 2);
+
+    console.log(self.ownerDocument.defaultView);
 
     spanEl.style.top = `${rippleY}px`;
     spanEl.style.left = `${rippleX}px`;
@@ -128,3 +74,81 @@ for (let i = 0; i < rippleEl.length; i += 1) {
   rippleEl[i].rippleEffect(rippleEl[i]);
 }
 
+const isOnViewport = (element) => {
+  const windowTop = window.scrollY;
+  const windowBottom = window.scrollY + window.innerHeight;
+
+  const elemTop = element.offsetTop;
+  const elemBottom = elemTop + element.offsetHeight;
+
+  return (elemTop >= windowTop) && (elemBottom <= windowBottom);
+};
+
+const initPivot = () => {
+  const pivotDelay = 200;
+  const overlay = document.getElementsByClassName('overlay')[0];
+  const pivotContainer = document.getElementsByClassName('pivot-container')[0];
+  const pivotButton = document.querySelectorAll('.pivot-button, .pivot-container');
+
+  let pivotEnterTimeout;
+  let pivotLeaveTimeout;
+
+  pivotButton.forEach((elem) => {
+    elem.addEventListener('mouseenter', () => {
+      clearTimeout(pivotLeaveTimeout);
+
+      pivotEnterTimeout = setTimeout(() => {
+        pivotContainer.classList.add('pivot-container--active');
+        overlay.style.display = 'block';
+      }, pivotDelay);
+    });
+
+    elem.addEventListener('mouseleave', () => {
+      clearTimeout(pivotEnterTimeout);
+
+      pivotLeaveTimeout = setTimeout(() => {
+        pivotContainer.classList.remove('pivot-container--active');
+        overlay.style.display = 'none';
+      }, pivotDelay);
+    });
+  });
+};
+
+const gtmImpression = (dataLayer) => {
+  const gtmElement = document.querySelectorAll('[data-impression]:not(.viewed)');
+
+  gtmElement.forEach((elem) => {
+    if (isOnViewport(elem)) {
+      dataLayer.push(JSON.parse(elem.getAttribute('data-impression')));
+      elem.classList.add('viewed');
+    }
+  });
+};
+
+const initGtmClickListener = (dataLayer) => {
+  document.body.addEventListener('click', (event) => {
+    if (event.target.matches('a[data-click]')) {
+      const gtmProps = JSON.parse(event.target.getAttribute('data-click'));
+      const targetUrl = event.target.getAttribute('href');
+
+      gtmProps.eventCallback = () => {
+        document.location = targetUrl;
+      };
+
+      dataLayer.push(gtmProps);
+    }
+  });
+};
+
+window.onload = () => {
+  const dataLayer = window.dataLayer || [];
+
+  initPivot();
+  initGtmClickListener(dataLayer);
+
+  gtmImpression(dataLayer);
+
+  window.onscroll = () => {
+    gtmImpression(dataLayer);
+  };
+};

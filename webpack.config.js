@@ -22,7 +22,7 @@ const webpackConfig = {
   devtool: isProduction ? false : 'source-map',
   entry: userConfig.entry,
   output: {
-    filename: '[name].[contenthash].min.js',
+    filename: isProduction ? '[name].[contenthash].min.js' : '[name].min.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: publicDir,
   },
@@ -57,6 +57,8 @@ const webpackConfig = {
           {
             loader: 'url-loader',
             options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
               limit: 8192,
             },
           },
@@ -81,6 +83,10 @@ const webpackConfig = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
       },
     ],
   },
