@@ -30,7 +30,12 @@ $ yarn build
 
 
 ## Configuration
-You can change app configuration through `config.js` instead of modify `webpack.config.js`.
+Copy environment configuration file from `.env.example`
+```
+$ cp .env.example .env
+```
+
+You can change app configuration through `config.js` instead of modifying `webpack.config.js`.
 
 ### Update entry file
 Bundle all js and scss file as entry into a chunk. Later, use this chunk for specific html page.
@@ -68,11 +73,11 @@ Do you prefer using jQuery in your project? If you don't, just change it to `fal
 
 ### CDN (Amazon S3)
 Set `upload: true` will activate automatic assets uploading to s3 when build process is running.
-You can set bucket, directory, and your public S3 URL in `options`. 
+You can set bucket, directory, and your public S3 URL in `options`. Outputted HTML will replace local assets url with CDN url.
 ```
 {
   cdn: {
-    upload: true,
+    upload: false,
     options: {
       bucket: 'tokopedia-upload',
       directory: 'assets-tokopoints/prod/static',
