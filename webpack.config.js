@@ -52,6 +52,18 @@ const webpackConfig = {
         use: ['babel-loader'],
       },
       {
+        test: /\.(mp4)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'media/',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           {
@@ -86,7 +98,14 @@ const webpackConfig = {
       },
       {
         test: /\.html$/,
-        use: ['html-loader'],
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              attrs: [':src'],
+            },
+          },
+        ],
       },
     ],
   },
