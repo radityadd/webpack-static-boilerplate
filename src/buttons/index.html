@@ -104,7 +104,8 @@
         Button states animation are similar with google’s material design animation, 
         please refer to video demo.
       </span>
-      <!-- <video src="images/unify/buttons/buttons-video.mp4"></video> -->
+
+      <video src="../media/buttons-video.mp4" autoplay loop class="unify-btn__video"></video>
       
       <img src="../images/unify/buttons/buttons-2.png" alt="" class="img-responsive center-block">
 
@@ -127,42 +128,56 @@
 
       <h3 class="unify-btn__subtitle">Demo</h3>
 
-      <div class="col-5">
-        <div>Main</div>
-        <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
-          <span class="btn-tkpd__text">Main Green</span>
-        </button>
-        <button class="btn-tkpd btn-tkpd--orange btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
-          <span class="btn-tkpd__text">Main Orange</span>
-        </button>
+      <div class="clearfix">
+        <!-- Main -->
+        <div class="col-5">
+          <div class="card card--button">
+            <h2>Main</h2>
+            <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
+              <span class="btn-tkpd__text">Main Green</span>
+            </button>
+            <button class="btn-tkpd btn-tkpd--orange btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
+              <span class="btn-tkpd__text">Main Orange</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="col-5">
+          <div class="card card--button">
+            <h2>Secondary</h2>
+            <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
+              <span class="btn-tkpd__text">Secondary Green</span>
+            </button>
+      
+            <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
+              <img class="btn-tkpd__icon "src="../images/addtocart.png" alt="">
+              <span class="btn-tkpd__text">Secondary Gray</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Low Emphasis -->
+        <div class="col-5">
+          <div class="card card--button">
+            <h2>Low Emphasis</h2 class="card-title">
+            <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
+              <span class="btn-tkpd__text">Low Emphasis</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Disabled -->
+        <div class="col-5">
+          <div class="card card--button">
+            <h2>Disabled</h2>
+            <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--medium btn-tkpd--w200" disabled>
+              <span class="btn-tkpd__text">Disabled</span>
+            </button>
+          </div>
+        </div>
+
       </div>
-
-      <div class="col-5">
-        <div>Secondary</div>
-        <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
-          <span class="btn-tkpd__text">Secondary Green</span>
-        </button>
-  
-        <button class="btn-tkpd btn-tkpd--sgray btn-tkpd--medium btn-tkpd--w200">
-          <img class="btn-tkpd__icon "src="../images/addtocart.png" alt="">
-          <span class="btn-tkpd__text">Secondary Gray</span>
-        </button>
-      </div>
-
-      <div class="unify-btn-main">
-        <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
-          <span class="btn-tkpd__text">Main Green</span>
-        </button>
-      </div>
-
-
-      <button class="btn-tkpd btn-tkpd--sgray btn-tkpd--medium btn-tkpd--w200" disabled>
-        <span class="btn-tkpd__text">Disabled</span>
-      </button>
-
-      <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--medium btn-tkpd--w200 ripple">
-        <span class="btn-tkpd__text">Disabled</span>
-      </button>
 
     </div>
   </main>
