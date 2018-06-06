@@ -52,13 +52,13 @@ const webpackConfig = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|mp4)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'images/',
+              outputPath: 'assets/',
               limit: 8192,
             },
           },
@@ -86,7 +86,12 @@ const webpackConfig = {
       },
       {
         test: /\.html$/,
-        use: ['html-loader'],
+        use: [{
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'video:src'],
+          },
+        }],
       },
     ],
   },
@@ -124,7 +129,7 @@ if (userConfig.jquery) {
 
 if (isProduction && userConfig.cdn.upload) {
   webpackConfig.plugins.push(new S3Plugin({
-    include: /.*\.(css|js|png|jpe?g|gif|svg)$/,
+    include: /.*\.(css|js|png|jpe?g|gif|svg|mp4)$/,
     s3Options: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

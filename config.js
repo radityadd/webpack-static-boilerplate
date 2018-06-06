@@ -24,7 +24,7 @@ const config = {
     },
   ],
   cdn: {
-    upload: true,
+    upload: false,
     options: {
       bucket: 'tokopedia-upload',
       directory: 'assets-tokopoints/prod/webpacktest/',
