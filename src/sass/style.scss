@@ -72,6 +72,7 @@ p {
     color: rgba(0, 0, 0, 0.54);
     line-height: 1.71;
     margin-bottom: 16px;
+    display: block;
   }
   &__divider {
     position: relative;
@@ -87,6 +88,12 @@ p {
       left: 0;
       transform: translateY(-50%);
     }
+  }
+  &__video {
+    width: 100%;
+    border: 1px solid #D5D5D5;
+    display: block;
+    margin-bottom: 32px;
   }
 }
 
@@ -178,6 +185,20 @@ p {
   &-text {
     color: rgba(0, 0, 0, 0.54);
     margin-bottom: 10px;
+  }
+  &--button {
+    text-align: center;
+    background-color: #fafafa;
+    border: solid 1px #d5d5d5;
+    border-radius: 0px;
+    box-shadow: none;
+    & h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.7);
+      display: block;
+      margin-bottom: 14px;
+    }
   }
 }
 
