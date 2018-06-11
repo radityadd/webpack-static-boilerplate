@@ -86,14 +86,12 @@ const webpackConfig = {
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: [':src'],
-            },
+        use: [{
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'video:src'],
           },
-        ],
+        }],
       },
     ],
   },
