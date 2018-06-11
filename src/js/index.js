@@ -55,8 +55,6 @@ Element.prototype.rippleEffect = (e) => {
     rippleX = parseInt(ev.pageX - (self.getBoundingClientRect().left + offsetX), 10) - (size / 2);
     rippleY = parseInt(ev.pageY - (self.getBoundingClientRect().top + offsetY), 10) - (size / 2);
 
-    console.log(self.ownerDocument.defaultView);
-
     spanEl.style.top = `${rippleY}px`;
     spanEl.style.left = `${rippleX}px`;
     spanEl.classList.add('animated');
