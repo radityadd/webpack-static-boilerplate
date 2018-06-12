@@ -3,6 +3,75 @@
  * if you wanna use jQuery.
  */
 
+/* ---------------------------
+    Ripple Effect Native JS
+--------------------------- */
+
+Element.prototype.rippleEffect = (e) => {
+  let self;
+  let size;
+  let spanEl;
+  let rippleX;
+  let rippleY;
+  let offsetX;
+  let offsetY;
+  let eWidth;
+  let eHeight;
+
+  const btn = Object.prototype.hasOwnProperty.call(e, 'disabled') || e.classList.contains('disabled') ? false : e;
+
+  btn.addEventListener('mousedown', (ev) => {
+    self = e;
+    // Disable right click
+    if (e.button === 2) {
+      return false;
+    }
+
+    let rippleFlag = 0;
+    for (let i = 0; i < self.childNodes.length; i += 1) {
+      if (self.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+        if (self.childNodes[i].matches('.ripple')) rippleFlag += 1;
+      }
+    }
+
+    if (rippleFlag === 0) {
+      const elChild = document.createElement('span');
+      elChild.classList.add('ripple');
+      self.insertBefore(elChild, self.firstChild);
+    }
+    [spanEl] = self.querySelectorAll('.ripple');
+    spanEl.classList.remove('animated');
+
+    eWidth = self.getBoundingClientRect().width;
+    eHeight = self.getBoundingClientRect().height;
+    size = Math.max(eWidth, eHeight);
+
+    spanEl.style.width = `${size}px`;
+    spanEl.style.height = `${size}px`;
+
+    offsetX = self.ownerDocument.defaultView.pageXOffset;
+    offsetY = self.ownerDocument.defaultView.pageYOffset;
+
+    rippleX = parseInt(ev.pageX - (self.getBoundingClientRect().left + offsetX), 10) - (size / 2);
+    rippleY = parseInt(ev.pageY - (self.getBoundingClientRect().top + offsetY), 10) - (size / 2);
+
+    spanEl.style.top = `${rippleY}px`;
+    spanEl.style.left = `${rippleX}px`;
+    spanEl.classList.add('animated');
+
+    setTimeout(() => {
+      spanEl.remove();
+    }, 800);
+
+    return ev;
+  });
+};
+
+const rippleEl = document.querySelectorAll('.ripple-effect');
+for (let i = 0; i < rippleEl.length; i += 1) {
+  rippleEl[i].rippleEffect(rippleEl[i]);
+}
+
 const isOnViewport = (element) => {
   const windowTop = window.scrollY;
   const windowBottom = window.scrollY + window.innerHeight;

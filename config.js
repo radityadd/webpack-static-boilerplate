@@ -18,6 +18,11 @@ const config = {
       chunks: ['main'],
     },
     {
+      template: './src/buttons/index.html',
+      filename: './buttons/index.html',
+      chunks: ['main'],
+    },
+    {
       template: './src/about/index.html',
       filename: './about/index.html',
       chunks: ['about/about'],
