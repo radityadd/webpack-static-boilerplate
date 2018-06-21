@@ -2,7 +2,8 @@ const config = {
   entry: {
     main: [
       './src/js/index.js',
-      './src/sass/style.scss'
+      './src/sass/style.scss',
+      './src/js/jqueryui.js',
     ]
   },
   jquery: true,

@@ -1,0 +1,132 @@
+body {
+  overflow: hidden;
+}
+
+.unify-navigation, .unify-content {
+  display: inline-block;
+  margin-right: -4px;
+  height: calc(100vh - 50px);
+  vertical-align: top;
+  overflow-y: scroll;
+}
+
+.unify-navigation {
+  width: 250px;
+  border-right: 8px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.unify-content {
+  width: calc(100% - 250px);
+}
+
+.unify-banner {
+  position: relative;
+  .unify-background {
+    position: absolute;
+    width: 100%;
+    img {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+}
+
+.unify-title {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  font-size: 34px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  .left-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .relative {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 100%;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+        left: -13px;
+      }
+    }
+  }
+}
+
+.unify-breadcrumb {
+  border-bottom: solid 1px #e7e7e7;
+  padding: 12px 50px;
+  li {
+    display: inline-block;
+    padding-right: 10px;
+    font-size: 17px;
+    opacity: .54;
+    &:first-child {
+      position: relative;
+      opacity: .7;
+      &::after {
+        content: '/';
+        position: absolute;
+        top: 0;
+        right: 1px;
+        color: #f13b00;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.unify-content {
+  h1 {
+    font-size: 24px !important;
+    letter-spacing: normal;
+    color: #000000 !important;
+    margin: 0 !important;
+    margin-top: 32px !important;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: #000000;
+    margin-top: 28px;
+    opacity: .7;
+  }
+
+  p {
+    font-size: 14px !important;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  img {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .hr {
+    margin-top: 48px;
+    background: #d5d5d5;
+    height: 1px;
+  }
+
+  video {
+    margin-top: 24px;
+  }
+}
