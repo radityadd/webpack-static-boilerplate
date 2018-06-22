@@ -130,3 +130,33 @@ body {
     margin-top: 24px;
   }
 }
+
+.unify-search-component {
+  position: relative;
+  input {
+    width: 100%;
+    background-color: #eeeeee;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    line-height: 30px;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 35px;
+    outline: none;
+    transition: all .3s ease;
+    &::placeholder {
+      color: rgba(0,0,0, .38);
+    }
+    &:focus {
+      background: #edfeee;
+      border: 2px solid #399c3f;
+      margin-top: -1px;
+    }
+  }
+  .unify-search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

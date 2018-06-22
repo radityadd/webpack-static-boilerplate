@@ -1,30 +1,29 @@
 .footer {
-  padding: 20px 0;
-  background: #FFF;
-  -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
+  padding: 15px 10px;
+  background-color: #FFF;
+  box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .footer-copyright {
-  padding: 10px 10px 10px 0;
-  float: left;
-
-  @include breakpoint(xs) {
+  padding: 10px;
+  @include breakpoint(smd) {
+    float: none;
     text-align: center;
-    display: block;
-    float: none!important;
+  }
+  @include breakpoint(md) {
+    float: left;
+    margin-top: 4px;
   }
 }
 
 .footer-connect {
   padding: 5px;
-  float: right;
-
-  @include breakpoint(xs) {
-    text-align: center;
-    display: block;
-    float: none!important;
+  @include breakpoint(smd) {
+      float: none;
+      text-align: center;
+  }
+  @include breakpoint(md) {
+    float: right;
   }
 }
 
@@ -32,59 +31,79 @@
   margin: 0;
   padding: 0 10px;
   display: inline-block;
+  height: 30px;
+  @include breakpoint(smd) {
+      display: block;
+      margin: auto;
+  }
+}
 
-  @include breakpoint(xs) {
-    padding: 5px;
+.footer-connect>ul:first-child {
+  border-right: 1px solid #CDCDCD;
+  @include breakpoint(smd) {
+      margin-bottom: 10px;
+      border-right: none;
   }
 }
 
 .footer-connect>ul>li {
   list-style: none;
   display: inline-block;
+  padding: 0 6px;
+  @include breakpoint(smd) {
+      padding: 0 2px;
+  }
+  &>a {
+    display: block;
+  }
 }
 
 .footer-connect__apps {
-  display: inline-block;
-  width: 100px;
   height: 30px;
-  background-position: center;
-  &.googleplay {
-    background: url('../images/icon-googleplay.png') no-repeat;
-    background-size: contain;
+  width: 100px;
+  display: inline-block;
+  @include breakpoint(smd) {
+      height: 27px;
   }
   &.appstore {
-    background: url('../images/icon-appstore.png') no-repeat;
+    background: url('../assets/icon-appstore.png') no-repeat;
+    background-size: contain;
+  }
+  &.googleplay {
+    background: url('../assets/icon-googleplay.png') no-repeat;
     background-size: contain;
   }
 }
 
-.footer-connect__icon {
-  display: inline-block;
+.footer-connect__socmed {
   height: 30px;
   width: 30px;
-  background-position: center;
+  display: inline-block;
+  @include breakpoint(smd) {
+      height: 27px;
+  }
   &.facebook {
-    background: url('../images/icon-facebook.png') no-repeat;
+    background: url('../assets/icon-facebook.png') no-repeat;
     background-size: contain;
   }
   &.instagram {
-    background: url('../images/icon-instagram.png') no-repeat;
+    background: url('../assets/icon-instagram.png') no-repeat;
     background-size: contain;
   }
   &.twitter {
-    background: url('../images/icon-twitter.png') no-repeat;
+    background: url('../assets/icon-twitter.png') no-repeat;
     background-size: contain;
   }
   &.youtube {
-    background: url('../images/icon-youtube.png') no-repeat;
+    background: url('../assets/icon-youtube.png') no-repeat;
     background-size: contain;
   }
   &.googleplus {
-    background: url('../images/icon-googleplus.png') no-repeat;
+    background: url('../assets/icon-googleplus.png') no-repeat;
     background-size: contain;
   }
   &.blog {
-    background: url('../images/icon-blog.png') no-repeat;
+    background: url('../assets/icon-blog.png') no-repeat;
     background-size: contain;
   }
 }

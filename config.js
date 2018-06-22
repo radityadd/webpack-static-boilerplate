@@ -4,21 +4,29 @@ const config = {
       './src/js/index.js',
       './src/sass/style.scss',
       './src/js/jqueryui.js',
-    ]
+    ],
   },
   jquery: true,
-  html: {
-    template: './src/index.html',
-    build: 'index.html'
-  },
+  html: [
+    {
+      template: './src/index.html',
+      filename: 'index.html',
+      chunks: ['main'],
+    },
+    {
+      template: './src/buttons/index.html',
+      filename: './buttons/index.html',
+      chunks: ['main'],
+    },
+  ],
   cdn: {
-    upload: true,
+    upload: false,
     options: {
       bucket: 'tokopedia-upload',
-      directory: 'assets-tokopoints/prod/static',
-      domain: 'https://ecs7.tokopedia.net/'
-    }
-  }
-}
+      directory: 'assets-tokopoints/prod/webpacktest/',
+      domain: 'https://ecs7.tokopedia.net/',
+    },
+  },
+};
 
-module.exports = config
+module.exports = config;

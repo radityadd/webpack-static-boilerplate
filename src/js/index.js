@@ -8,33 +8,152 @@ $.expr[":"].contains = $.expr.createPseudo(function(arg) {
   };
 });
 
-$(document).ready(function () {
-  /* ================
-   * Pivot Controller
-   * ================ */
-  var pivotDelay = 200, pivotEnterTimeout, pivotLeaveTimeout;
-  var $overlay = $('.overlay');
-  var $pivotContainer = $('.pivot-container');
+/* ---------------------------
+    Ripple Effect Native JS
+--------------------------- */
 
-  $('.pivot-button, .pivot-container').hover(function () {
-    /* Dont display pivot if mouse enter < delay */
-    clearTimeout(pivotLeaveTimeout);
+Element.prototype.rippleEffect = (e) => {
+  let self;
+  let size;
+  let spanEl;
+  let rippleX;
+  let rippleY;
+  let offsetX;
+  let offsetY;
+  let eWidth;
+  let eHeight;
 
-    /* Setting delay on mouseenter */
-    pivotEnterTimeout = setTimeout(function () {
-      $pivotContainer.addClass('pivot-container--active');
-      $overlay.show();
-    }, pivotDelay);
-  }, function () {
-    /* Dont remove pivot if mouse leave < delay */
-    clearTimeout(pivotEnterTimeout);
+  const btn = Object.prototype.hasOwnProperty.call(e, 'disabled') || e.classList.contains('disabled') ? false : e;
 
-    /* Setting delay on mouseleave */
-    pivotLeaveTimeout = setTimeout(function () {
-      $pivotContainer.removeClass('pivot-container--active');
-      $overlay.hide();
-    }, pivotDelay);
+  btn.addEventListener('mousedown', (ev) => {
+    self = e;
+    // Disable right click
+    if (e.button === 2) {
+      return false;
+    }
+
+    let rippleFlag = 0;
+    for (let i = 0; i < self.childNodes.length; i += 1) {
+      if (self.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+        if (self.childNodes[i].matches('.ripple')) rippleFlag += 1;
+      }
+    }
+
+    if (rippleFlag === 0) {
+      const elChild = document.createElement('span');
+      elChild.classList.add('ripple');
+      self.insertBefore(elChild, self.firstChild);
+    }
+    [spanEl] = self.querySelectorAll('.ripple');
+    spanEl.classList.remove('animated');
+
+    eWidth = self.getBoundingClientRect().width;
+    eHeight = self.getBoundingClientRect().height;
+    size = Math.max(eWidth, eHeight);
+
+    spanEl.style.width = `${size}px`;
+    spanEl.style.height = `${size}px`;
+
+    offsetX = self.ownerDocument.defaultView.pageXOffset;
+    offsetY = self.ownerDocument.defaultView.pageYOffset;
+
+    rippleX = parseInt(ev.pageX - (self.getBoundingClientRect().left + offsetX), 10) - (size / 2);
+    rippleY = parseInt(ev.pageY - (self.getBoundingClientRect().top + offsetY), 10) - (size / 2);
+
+    spanEl.style.top = `${rippleY}px`;
+    spanEl.style.left = `${rippleX}px`;
+    spanEl.classList.add('animated');
+
+    setTimeout(() => {
+      spanEl.remove();
+    }, 800);
+
+    return ev;
   });
+};
+
+const rippleEl = document.querySelectorAll('.ripple-effect');
+for (let i = 0; i < rippleEl.length; i += 1) {
+  rippleEl[i].rippleEffect(rippleEl[i]);
+}
+
+const isOnViewport = (element) => {
+  const windowTop = window.scrollY;
+  const windowBottom = window.scrollY + window.innerHeight;
+
+  const elemTop = element.offsetTop;
+  const elemBottom = elemTop + element.offsetHeight;
+
+  return (elemTop >= windowTop) && (elemBottom <= windowBottom);
+};
+
+const initPivot = () => {
+  const pivotDelay = 200;
+  const overlay = document.getElementsByClassName('overlay')[0];
+  const pivotContainer = document.getElementsByClassName('pivot-container')[0];
+  const pivotButton = document.querySelectorAll('.pivot-button, .pivot-container');
+
+  let pivotEnterTimeout;
+  let pivotLeaveTimeout;
+
+  pivotButton.forEach((elem) => {
+    elem.addEventListener('mouseenter', () => {
+      clearTimeout(pivotLeaveTimeout);
+
+      pivotEnterTimeout = setTimeout(() => {
+        pivotContainer.classList.add('pivot-container--active');
+        overlay.style.display = 'block';
+      }, pivotDelay);
+    });
+
+    elem.addEventListener('mouseleave', () => {
+      clearTimeout(pivotEnterTimeout);
+
+      pivotLeaveTimeout = setTimeout(() => {
+        pivotContainer.classList.remove('pivot-container--active');
+        overlay.style.display = 'none';
+      }, pivotDelay);
+    });
+  });
+};
+
+const gtmImpression = (dataLayer) => {
+  const gtmElement = document.querySelectorAll('[data-impression]:not(.viewed)');
+
+  gtmElement.forEach((elem) => {
+    if (isOnViewport(elem)) {
+      dataLayer.push(JSON.parse(elem.getAttribute('data-impression')));
+      elem.classList.add('viewed');
+    }
+  });
+};
+
+const initGtmClickListener = (dataLayer) => {
+  document.body.addEventListener('click', (event) => {
+    if (event.target.matches('a[data-click]')) {
+      const gtmProps = JSON.parse(event.target.getAttribute('data-click'));
+      const targetUrl = event.target.getAttribute('href');
+
+      gtmProps.eventCallback = () => {
+        document.location = targetUrl;
+      };
+
+      dataLayer.push(gtmProps);
+    }
+  });
+};
+
+window.onload = () => {
+  const dataLayer = window.dataLayer || [];
+
+  initPivot();
+  initGtmClickListener(dataLayer);
+
+  gtmImpression(dataLayer);
+
+  window.onscroll = () => {
+    gtmImpression(dataLayer);
+  };
 
   $('.unify-banner').height($('.unify-banner').width() * 0.0988023952);
 
@@ -114,25 +233,22 @@ $(document).ready(function () {
   });
 
   $('.unify-dropdown-container').mouseleave(function() {
-    $(this).find('.dropdown-indicator').hide();
+    $(this).find('.dropdown-indicator').fadeOut(150);
   });
 
   $('.unify-dropdown-container').mouseenter(function() {
-    $(this).find('.dropdown-indicator').show();
+    $(this).find('.dropdown-indicator').fadeIn(150);
   });
 
   $('*[dropdown-menu]').focus(function() {
     $(this).siblings('.unify-dropdown-container').slideDown({
-      easing: 'easeOutBounce'
+      duration: 600,
+      easing: 'easeInOutExpo'
     });
-    $(this).siblings('.unify-dropdown-container').find('ul li').css({'marginTop': 20, 'display': 'none'});
-    // $(this).siblings('.unify-dropdown-container').find('ul li').animate({'opacity': 'show', 'marginTop': 0}, 200);
-    let delay = 10;
-    let v = 5;
-    $(this).siblings('.unify-dropdown-container').find('ul li').each(function() {
-      $(this).animate({'opacity': 'show', 'marginTop': 0}, 300);
-      delay += v;
-      v += 20;
+    $(this).siblings('.unify-dropdown-container').find('ul').css({'marginTop': 1000, 'opacity': 0});
+    $(this).siblings('.unify-dropdown-container').find('ul').each(function() {
+      // $(this).animate({'opacity': 'show'}, 1000);
+      $(this).animate({'marginTop': 0, 'opacity': 1}, 500, 'easeOutQuint');
     });
   });
 
@@ -144,5 +260,4 @@ $(document).ready(function () {
   $('*[dropdown-menu]').blur(function() {
     $(this).siblings('.unify-dropdown-container').delay(200).slideUp(200);
   });
-
-})
+};
