@@ -60,7 +60,7 @@
   font-size: 0.88571rem;
   line-height: 16px;
   height: 32px;
-  &__transparent {
+  &--transparent {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.56);
     &-green{
@@ -83,28 +83,28 @@
   border-radius: 4px;
   background-color: white;
   box-shadow: 0 2px 6px 0.5px rgba(0, 0, 0, 0.12);
-  &--image {
+  &__image {
     display: block;
-    &__top {
+    &--top {
       width: 100%;
     }
-    &__left {
+    &--left {
       display: inline-block;
     }
   }
-  &--content {
-    &__left-icon, &__right-content, &__right-icon, &__left-content {
+  &__content {
+    &--left-icon, &--right-content, &--right-icon, &--left-content {
       display: inline-block;
       margin-right: -4px;
       vertical-align: middle;
     }
-    &__left-icon, &__right-icon{
+    &--left-icon, &--right-icon{
       width: 20%;
       & img{
         width: 80%;
       }
     }
-    &__right-icon {
+    &--right-icon {
       text-align: right;
       &-expand {
         width: 15px;
@@ -113,7 +113,7 @@
         }
       }
     }
-    &__right-content, &__left-content{
+    &--right-content, &--left-content{
       width: 80%;
       &-expand {
         width: calc(100% - 15px);
@@ -138,19 +138,19 @@
         display: none;
       }
     }
-    &__expandable{
+    &--expandable{
       padding: 16px;
     }
   }
-  &--buttons {
+  &__buttons {
     margin-top: 16px;
-    &__right {
+    &--right {
       text-align: right;
     }
     &-container {
       padding: 10px 16px;
     }
-    &__block{
+    &--block{
       button{
         display: block;
         margin-left: auto;
@@ -165,14 +165,14 @@
   }
   .expandable {
     display: none;
-    .unify-card--buttons {
+    .unify-card__buttons {
       padding: 16px;
       padding-top: 0;
     }
   }
 }
 
-.unify-form-input--container {
+.unify-form-input__container {
   .unify-form-input {
     transition: all .3s ease;
     &[disabled] {
@@ -191,11 +191,11 @@
     &::-ms-input-placeholder { /* Microsoft Edge */
       color: rgba(0, 0, 0, .38);
     }
-    &--info {
+    &__info {
       transition: transform .3s ease, opacity .3s ease;
       transform: translateY(0);
       opacity: 1;
-      &__hidden {
+      &--hidden {
         opacity: 0 !important;
         transform: translateY(100%);
       }
@@ -208,15 +208,15 @@
       opacity: .54;
       font-weight: 600;
       margin-top: 8px;
-      &__error {
+      &--error {
         opacity: 1;
         color: #E98667;
       }
-      &__success {
+      &--success {
         opacity: 1;
         color: #42B549;
       }
-      &__counter {
+      &--counter {
         position: absolute;
         top: 5px; 
         right: 0;
@@ -224,22 +224,22 @@
         font-weight: 600;
       }
     }
-    &--label {
+    &__label {
       opacity: .7;
       font-size: 13px;
       margin-bottom: 8px;
       font-weight: 600;
       transition: color .3s ease, opacity .3s ease;
-      &__success {
+      &--success {
         color: #42B549;
         opacity: 1;
       }
-      &__error {
+      &--error {
         color: #EB8D70;
         opacity: 1;
       }
     }
-    &--text {
+    &__text {
       width: 100%;
       border-radius: 3px;
       border: 1px solid #e3e3e3;
@@ -316,7 +316,7 @@
   }
 }
 
-.unify-tab--container {
+.unify-tab__container {
   .unify-tab-tabs {
     position: relative;
     border-bottom: 1px solid #e3e3e3;
@@ -328,10 +328,10 @@
       margin-right: -4px;
       cursor: pointer;
       transition: color .3s ease, background-color .3s ease;
-      &__active {
+      &--active {
         color: #42B549;
       }
-      &:not(.unify-tab__active):hover {
+      &:not(.unify-tab--active):hover {
         background-color: #EDFEEE;
         color: #42B549;
       }
@@ -347,8 +347,8 @@
   }
 }
 
-.unify-tab--content-wrapper {
-  .unify-tab--content-container {
+.unify-tab__content-wrapper {
+  .unify-tab__content-container {
     display: none;
     &:first-child {
       display: block;
@@ -357,20 +357,20 @@
 }
 
 .unify-placeholder {
-  &--image  {
+  &__image  {
     background-color: #eee;
     border-radius: 4px;
     height: 150px;
   }
-  &--line{
+  &__line{
     background-color: #eee;
     border-radius: 4px;
     height: 14px;
     margin-top: 8px;
-    &__small {
+    &--small {
       width: 30%;
     }
-    &__medium {
+    &--medium {
       width: 60%;
     }
   }

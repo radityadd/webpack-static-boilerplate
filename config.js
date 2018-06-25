@@ -18,6 +18,16 @@ const config = {
       filename: './buttons/index.html',
       chunks: ['main'],
     },
+    {
+      template: './src/example/index.html',
+      filename: 'example/index.html',
+      chunks: ['main'],
+    },
+    {
+      template: './src/example/form.html',
+      filename: 'example/form.html',
+      chunks: ['main'],
+    },
   ],
   cdn: {
     upload: false,
