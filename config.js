@@ -3,14 +3,10 @@ const config = {
     main: [
       './src/js/index.js',
       './src/sass/style.scss',
-    ],
-    'about/about': [
-      './src/js/index.js',
-      './src/sass/style.scss',
-      './src/about/about.js',
+      './src/js/jqueryui.js',
     ],
   },
-  jquery: false,
+  jquery: true,
   html: [
     {
       template: './src/index.html',
@@ -21,11 +17,6 @@ const config = {
       template: './src/buttons/index.html',
       filename: './buttons/index.html',
       chunks: ['main'],
-    },
-    {
-      template: './src/about/index.html',
-      filename: './about/index.html',
-      chunks: ['about/about'],
     },
   ],
   cdn: {

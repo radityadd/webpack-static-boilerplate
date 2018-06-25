@@ -85,7 +85,7 @@ const webpackConfig = {
         use: ['file-loader'],
       },
       {
-        test: /\.html$/,
+        test: /\.(html|mp4)$/,
         use: [{
           loader: 'html-loader',
           options: {
