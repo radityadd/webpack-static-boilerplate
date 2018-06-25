@@ -5,7 +5,7 @@ const userConfig = require('./config');
 const isProduction = process.env.NODE_ENV === 'production';
 const publicDir = (isProduction && userConfig.cdn.upload) ?
   (userConfig.cdn.options.domain + userConfig.cdn.options.directory) :
-  '';
+  '/';
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
