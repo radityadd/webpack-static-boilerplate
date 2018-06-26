@@ -5,7 +5,7 @@ const userConfig = require('./config');
 const isProduction = process.env.NODE_ENV === 'production';
 const publicDir = (isProduction && userConfig.cdn.upload) ?
   (userConfig.cdn.options.domain + userConfig.cdn.options.directory) :
-  '';
+  '/';
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -81,11 +81,11 @@ const webpackConfig = {
         }],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf|mp4)$/,
         use: ['file-loader'],
       },
       {
-        test: /\.(html|mp4)$/,
+        test: /\.(html)$/,
         use: [{
           loader: 'html-loader',
           options: {
