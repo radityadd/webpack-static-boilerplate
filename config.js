@@ -17,9 +17,9 @@ const config = {
       chunks: ['main'],
     },
     {
-      template: './src/buttons/index.html',
-      filename: './buttons/index.html',
-      chunks: ['main'],
+      template: './src/example/buttons.html',
+      filename: 'example/buttons.html',
+      chunks: ['main', 'unify'],
     },
     {
       template: './src/example/index.html',

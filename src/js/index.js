@@ -273,6 +273,11 @@ window.onload = () => {
     })
   });
 
+  $('.unify-navigation ul li').click(function() {
+    $('.unify-navigation ul li').removeClass('active');
+    $(this).addClass('active');
+  });
+
   //unify 
   
 };

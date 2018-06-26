@@ -15,6 +15,9 @@ body {
   border-right: 8px solid #f0f0f0;
   // padding: 16px 24px;
   ul {
+    a {
+      text-decoration: none;
+    }
     li {
       padding: 12px 24px;
       font-size: 14px;
@@ -111,6 +114,9 @@ body {
 .unify-content {
   .unify-content-wrapper {
     padding: 0 44px; width: 975px; margin: 0 auto; padding-top: 30px;
+    &--button {
+      width: 1200px;
+    }
     & > h1 {
       font-size: 24px !important;
       letter-spacing: normal;
