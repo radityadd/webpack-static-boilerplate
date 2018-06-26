@@ -272,7 +272,9 @@
     width: 10px;
     border-top: 1px solid #bebebe;
     border-right: 1px solid #bebebe;
-    transform: translateY(-50%) rotate(135deg);
+    transform: translateY(calc(-50% + 0px)) rotate(135deg);
+    transition: transform .5s ease, border-color .5s ease;
+    cursor: pointer;
   }
 
   .unify-dropdown-container {
