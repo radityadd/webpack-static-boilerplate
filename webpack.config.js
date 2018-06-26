@@ -81,11 +81,11 @@ const webpackConfig = {
         }],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf|mp4)$/,
         use: ['file-loader'],
       },
       {
-        test: /\.(html|mp4)$/,
+        test: /\.(html)$/,
         use: [{
           loader: 'html-loader',
           options: {
