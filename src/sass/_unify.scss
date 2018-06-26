@@ -107,6 +107,9 @@ body {
 .unify-content {
   .unify-content-wrapper {
     padding: 0 44px; width: 975px; margin: 0 auto; padding-top: 30px;
+    &--button {
+      width: 1200px;
+    }
     & > h1 {
       font-size: 24px !important;
       letter-spacing: normal;
