@@ -32,6 +32,11 @@ const config = {
       chunks: ['main', 'unify'],
     },
     {
+      template: './src/example/selector.html',
+      filename: 'example/selector.html',
+      chunks: ['main', 'unify'],
+    },
+    {
       template: './src/example/cards.html',
       filename: 'example/cards.html',
       chunks: ['main'],
