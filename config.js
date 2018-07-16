@@ -5,6 +5,9 @@ const config = {
       './src/sass/style.scss',
       './src/js/jqueryui.js',
     ],
+    unify: [
+      './src/js/unify.js',
+    ],
   },
   jquery: true,
   html: [
@@ -14,9 +17,9 @@ const config = {
       chunks: ['main'],
     },
     {
-      template: './src/buttons/index.html',
-      filename: './buttons/index.html',
-      chunks: ['main'],
+      template: './src/example/buttons.html',
+      filename: 'example/buttons.html',
+      chunks: ['main', 'unify'],
     },
     {
       template: './src/example/index.html',
@@ -26,6 +29,16 @@ const config = {
     {
       template: './src/example/form.html',
       filename: 'example/form.html',
+      chunks: ['main', 'unify'],
+    },
+    {
+      template: './src/example/selector.html',
+      filename: 'example/selector.html',
+      chunks: ['main', 'unify'],
+    },
+    {
+      template: './src/example/cards.html',
+      filename: 'example/cards.html',
       chunks: ['main'],
     },
   ],
