@@ -8,9 +8,9 @@
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    border: 1px solid transparent;
+    border: none;
     white-space: nowrap;
-    border-radius: 3px;
+    border-radius: 6px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -42,18 +42,39 @@
     // }
 
     // SIZE
-    &--small {
-      font-size: 11px;
-      padding: 6.5px;
+    &--green, &--orange, &--lgreen {
+      &.btn-tkpd--small {
+        font-size: 11px;
+        padding: 10px;
+      }
+      &.btn-tkpd--medium {
+        font-size: 13px;
+        padding: 11px;
+      }
+      &.btn-tkpd--large {
+        font-size: 14px;
+        padding: 13.5px;
+      }
     }
-    &--medium {
-      font-size: 13px;
-      padding: 10px;
+
+    &--sgreen,
+    &--sgrey, 
+    &--sgray,
+    &:disabled {
+      &.btn-tkpd--small {
+        font-size: 11px;
+        padding: 9px;
+      }
+      &.btn-tkpd--medium {
+        font-size: 13px;
+        padding: 10px;
+      }
+      &.btn-tkpd--large {
+        font-size: 14px;
+        padding: 12.5px;
+      }
     }
-    &--large {
-      font-size: 14px;
-      padding: 15px;
-    }
+
     
     // Main Colors
     &--green {
@@ -64,14 +85,14 @@
         position: relative;
         &:before {
             content: "";
-                position: absolute;
-                transition: opacity 0.3s linear;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to left, rgba(0,0,0, 0.10) 0%,rgba(0,0,0,0.3) 100%);
-                top: 0;
-                left: 0;
-                opacity: 0;
+            position: absolute;
+            transition: opacity 0.3s linear;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(0,0,0, 0.10) 0%,rgba(0,0,0,0.3) 100%);
+            top: 0;
+            left: 0;
+            opacity: 0;
         }
         &:hover {
           color: #FAFAFA;
@@ -256,6 +277,9 @@
       border: 1px solid #D5D5D5;
       display: block;
       margin-bottom: 32px;
+    }
+    & img {
+      width: 100%;
     }
   }
   
