@@ -31,38 +31,43 @@
     <div class="unify-content-wrapper unify-content-wrapper--button">
       <div class="unify-btn">
         <h1 class="unify-btn__buttons">Buttons</h1>
+
+        <!-- Types -->
         <h3 class="unify-btn__subtitle">Types</h3>
         <span class="unify-btn__copy">
           By default there are four types of buttons, Main, secondary, disabled, and low emphasis button. These four buttons also adaptable
           to use with icons, consider the icon size to be 24x24px to be fit into button.
         </span>
-        <img src="../images/unify/buttons/buttons-1.png" alt="" class="img-responsive center-block">
-
+        <img src="../images/unify/buttons/new-1.png" alt="" class="img-responsive center-block">
         <div class="unify-btn__divider"></div>
 
-        <h3 class="unify-btn__subtitle">States</h3>
+        <!-- Modification -->
+        <h3 class="unify-btn__subtitle">Modification</h3>
+        <img src="../images/unify/buttons/new-2.png" alt="" class="img-responsive center-block">
         <span class="unify-btn__copy">
-          Button states animation are similar with google’s material design animation, please refer to video demo.
+          (1) User may add glow to add emphasis, note this is not hover style, and just applicable to main button. (2) User may add icon to emphasize button function.
         </span>
-
-        <video src="../media/buttons-video.mp4" autoplay loop class="unify-btn__video" controls></video>
-
-        <img src="../images/unify/buttons/buttons-2.png" alt="" class="img-responsive center-block">
-
         <div class="unify-btn__divider"></div>
 
+        <!-- Guidelines -->
         <h3 class="unify-btn__subtitle">Guidelines</h3>
         <span class="unify-btn__subtitle--small">Padding</span>
-
-        <img src="../images/unify/buttons/buttons-3.png" alt="" class="img-responsive center-block mb32">
-
+        <img src="../images/unify/buttons/new-guide.png" alt="" class="img-responsive center-block mb32">
         <span class="unify-btn__subtitle--small">Colors</span>
-        <img src="../images/unify/buttons/buttons-4.png" alt="" class="img-responsive center-block">
+        <img src="../images/unify/buttons/new-color.png" alt="" class="img-responsive center-block">
         <span class="unify-btn__copy">
           (1) Two main button uses same text color, only differs in background color, (2) when hovering, main text background overlayed
           with #00 20% vertical gradient, (3) low emphasis button uses same color with secondary button upon hovering.
         </span>
+        <div class="unify-btn__divider"></div>
 
+        <!-- States -->
+        <h3 class="unify-btn__subtitle">States</h3>
+        <span class="unify-btn__copy">
+          Button states animation are similar with google’s material design animation, please refer to video demo.
+        </span>
+        <video src="../media/buttons-video.mp4" autoplay loop class="unify-btn__video" controls></video>
+        <img src="../images/unify/buttons/buttons-2.png" alt="" class="img-responsive center-block">
         <div class="unify-btn__divider"></div>
 
         <h3 class="unify-btn__subtitle">Demo</h3>
@@ -72,10 +77,29 @@
           <div class="col-5">
             <div class="card card--button">
               <h2>Main</h2>
+
+              <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--large btn-tkpd--w200 ripple-effect ripple-main">
+                <span class="btn-tkpd__text">Main Green</span>
+              </button>
+              <button class="btn-tkpd btn-tkpd--orange btn-tkpd--large btn-tkpd--w200 ripple-effect ripple-main">
+                <span class="btn-tkpd__text">Main Orange</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
               <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
                 <span class="btn-tkpd__text">Main Green</span>
               </button>
               <button class="btn-tkpd btn-tkpd--orange btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-main">
+                <span class="btn-tkpd__text">Main Orange</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
+              <button id="main-btn" class="btn-tkpd btn-tkpd--green btn-tkpd--small btn-tkpd--w200 ripple-effect ripple-main">
+                <span class="btn-tkpd__text">Main Green</span>
+              </button>
+              <button class="btn-tkpd btn-tkpd--orange btn-tkpd--small btn-tkpd--w200 ripple-effect ripple-main">
                 <span class="btn-tkpd__text">Main Orange</span>
               </button>
             </div>
@@ -85,6 +109,17 @@
           <div class="col-5">
             <div class="card card--button">
               <h2>Secondary</h2>
+              <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--large btn-tkpd--w200 ripple-effect ripple-secondary">
+                <span class="btn-tkpd__text">Secondary Green</span>
+              </button>
+
+              <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--large btn-tkpd--w200 ripple-effect ripple-secondary">
+                <img class="btn-tkpd__icon " src="../images/addtocart.png" alt="">
+                <span class="btn-tkpd__text">Secondary Gray</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
               <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
                 <span class="btn-tkpd__text">Secondary Green</span>
               </button>
@@ -93,6 +128,19 @@
                 <img class="btn-tkpd__icon " src="../images/addtocart.png" alt="">
                 <span class="btn-tkpd__text">Secondary Gray</span>
               </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
+              <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--small btn-tkpd--w200 ripple-effect ripple-secondary">
+                <span class="btn-tkpd__text">Secondary Green</span>
+              </button>
+
+              <button class="btn-tkpd btn-tkpd--sgreen btn-tkpd--small btn-tkpd--w200 ripple-effect ripple-secondary">
+                <img class="btn-tkpd__icon " src="../images/addtocart.png" alt="">
+                <span class="btn-tkpd__text">Secondary Gray</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
             </div>
           </div>
 
@@ -100,7 +148,20 @@
           <div class="col-5">
             <div class="card card--button">
               <h2>Low Emphasis</h2 class="card-title">
+
+              <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--large btn-tkpd--w200 ripple-effect ripple-secondary">
+                <span class="btn-tkpd__text">Low Emphasis</span>
+              </button>
+              
+              <div style="padding-bottom: 24px;"></div>
+
               <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--medium btn-tkpd--w200 ripple-effect ripple-secondary">
+                <span class="btn-tkpd__text">Low Emphasis</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
+              <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--small btn-tkpd--w200 ripple-effect ripple-secondary">
                 <span class="btn-tkpd__text">Low Emphasis</span>
               </button>
             </div>
@@ -110,7 +171,20 @@
           <div class="col-5">
             <div class="card card--button">
               <h2>Disabled</h2>
+
+              <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--large btn-tkpd--w200" disabled>
+                <span class="btn-tkpd__text">Disabled</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
               <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--medium btn-tkpd--w200" disabled>
+                <span class="btn-tkpd__text">Disabled</span>
+              </button>
+
+              <div style="padding-bottom: 24px;"></div>
+
+              <button class="btn-tkpd btn-tkpd--lgreen btn-tkpd--small btn-tkpd--w200" disabled>
                 <span class="btn-tkpd__text">Disabled</span>
               </button>
             </div>
